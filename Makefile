@@ -16,3 +16,23 @@ CFILES=gpio.c main.C
 OBJECTS=gpio.o main.o
 #Binary name
 BINARY=bin
+
+###########################################################
+#					RULES							  #
+###########################################################
+
+#Build everything
+all: $(BINARY)
+
+#Generate Binary executable
+$(BINARY): $(OBJECTS)
+		$(CC) -o $@ $^
+
+#Generate object files
+%.c:%.o
+		$(CC) $(CFLAGS) -c -o $@ $^
+
+#Clean repository
+clean:
+		rm -rf $(BINARY) $(OBJECTS)
+
